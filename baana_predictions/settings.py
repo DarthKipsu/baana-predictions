@@ -1,6 +1,5 @@
 """
-Django settings for gettingstarted project, on Heroku. Fore more info, see:
-https://github.com/heroku/heroku-django-template
+Django settings for baana predictions project, on Heroku.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.8/topics/settings/
