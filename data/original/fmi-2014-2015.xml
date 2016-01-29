@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wfs:FeatureCollection
-    timeStamp="2016-01-24T18:27:08Z"
+    timeStamp="2016-01-29T08:14:48Z"
     numberMatched="5"
     numberReturned="5"
            xmlns:wfs="http://www.opengis.net/wfs/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -25,17 +25,17 @@
         http://xml.fmi.fi/namespace/om/atmosphericfeatures/1.0 http://xml.fmi.fi/schema/om/atmosphericfeatures/1.0/atmosphericfeatures.xsd">
    
 	    <wfs:member>
-                <omso:PointTimeSeriesObservation gml:id="WFS-caYlqqgK_o5dJTEDQYlSEwg5SgGJTowsIWbbpdOt.Lnl5dsPTTv3c3Trvlw9NGXk6dZMOnZ5dOumnbl7YdnXLww6eULSxZc.ndU07ctr76FChGNj5c61ItCnHdOmjJq4Z2XdkqaduW1_9ChQjOzbdPPTk51mMWDBy3YujXl899_LJf39svLvy09MOLZliZmzD0y8.kTM2b8eHZlrUzab8aSu69MzhrbcPiJp59MO7HlpWroQGltw.IvDfj0c5wSQ.wm9ty9Mu.hh5YduXpl5c6yuXLJh8tbbp589O7PUy.OlY07DObW7rtn5qfTD00793OcJrceuHZp6eZO7Nvia3Pph6ad.6p54Za3N_DLuyYemG_kw6dnluc.m_llyceuXl5v6clcIWbbpdOt.Lnl5dsPTTv3c3Trvlw9NGXk6dZMOnZ5dOumnbl7YdnXLww6eTQ6aduWn0y8Jmh007ctrfuy1jVakMA--">
+                <omso:PointTimeSeriesObservation gml:id="WFS-Eqx.ifvO.nwfQ6rjI2TMR_jkDxmJTowsIWbbpdOt.Lnl5dsPTTv3c3Trvlw9NGXk6dZMOnZ5dOumnbl7YdnXLww6eULSxZc.ndU07ctr76FChGNj5c61ItCnHdOmjJq4Z2XdkqaduW199CsfjOzbdPPTk51mMWDBy3YujXl899_LJf39svLvy09MOLZliZmzD0y8.kTM2b8eHZlrUzab8aSu69MzhrbcPiJp59MO7HlpWroQGltw.IvDfj0c5wSQ.wm9ty9Mu.hh5YduXpl5c6yuXLJh8tbbp589O7PUy.OlY07DObW7rtn5qfTD00793OcJrceuHZp6eZO7Nvia3Pph6ad.6p54Za3N_DLuyYemG_kw6dnluc.m_llyceuXl5v6clcIWbbpdOt.Lnl5dsPTTv3c3Trvlw9NGXk6dZMOnZ5dOumnbl7YdnXLww6eTQ6aduWn0y8Jmh007ctrfuy1jVakMA--">
 
 		            <om:phenomenonTime>
         <gml:TimePeriod  gml:id="time1-1-1">
           <gml:beginPosition>2014-01-01T00:00:00Z</gml:beginPosition>
-          <gml:endPosition>2015-01-01T00:00:00Z</gml:endPosition>
+          <gml:endPosition>2014-12-31T00:00:00Z</gml:endPosition>
         </gml:TimePeriod>
       </om:phenomenonTime>
       <om:resultTime>
         <gml:TimeInstant gml:id="time2-1-1">
-          <gml:timePosition>2015-01-01T00:00:00Z</gml:timePosition>
+          <gml:timePosition>2014-12-31T00:00:00Z</gml:timePosition>
         </gml:TimeInstant>
       </om:resultTime>      
 
@@ -2269,12 +2269,6 @@
                                       <wml2:time>2014-12-31T00:00:00Z</wml2:time>
 				      <wml2:value>-1.0</wml2:value>
                             </wml2:MeasurementTVP>
-                        </wml2:point>                          
-                        <wml2:point>
-                            <wml2:MeasurementTVP> 
-                                      <wml2:time>2015-01-01T00:00:00Z</wml2:time>
-				      <wml2:value>0.9</wml2:value>
-                            </wml2:MeasurementTVP>
                         </wml2:point>                         
                     </wml2:MeasurementTimeseries>
                 </om:result>
@@ -2282,7 +2276,7 @@
         </omso:PointTimeSeriesObservation>
     </wfs:member>
 	    <wfs:member>
-                <omso:PointTimeSeriesObservation gml:id="WFS-q5PUX9.IwEdLYXUfuHVACtwsdMCJTowsIWbbpdOt.Lnl5dsPTTv3c3Trvlw9NGXk6dZMOnZ5dOumnbl7YdnXLww6eULSxZc.ndU07ctr76FChGNj5c61ItCnHdOmjJq4Z2XdkqaduW1_9ChQjOzbdPPTk51mMWDBy3YujXl899_LJf39svLvy09MOLZliZmzD0y8.kTM2b8eHZlrUzab8aSu69MzhrbcPiJp59MO7HlpWroQGltw.IvDfj0c5wSQ.wm9ty9Mu.hh5YduXpl5c6yOmTD5a23Tz56d2epl8dKxp2Gc2t3XbPzU.mHpp37uc4TW49cOzT08yd2bfE1ufTD00791Tzwy1ub.GXdkw9MN_Jh07PLc59N_LLk49cvLzf05K4Qs23S6db8XPLy7Yemnfu5unXfLh6aMvJ06yYdOzy6ddNO3L2w7OuXhh08mh007ctPpl4TNDpp25bW_dlrGq1IY">
+                <omso:PointTimeSeriesObservation gml:id="WFS-_Klm5Qp5GVId0zSEnAL2dQVvG6eJTowsIWbbpdOt.Lnl5dsPTTv3c3Trvlw9NGXk6dZMOnZ5dOumnbl7YdnXLww6eULSxZc.ndU07ctr76FChGNj5c61ItCnHdOmjJq4Z2XdkqaduW199CsfjOzbdPPTk51mMWDBy3YujXl899_LJf39svLvy09MOLZliZmzD0y8.kTM2b8eHZlrUzab8aSu69MzhrbcPiJp59MO7HlpWroQGltw.IvDfj0c5wSQ.wm9ty9Mu.hh5YduXpl5c6yOmTD5a23Tz56d2epl8dKxp2Gc2t3XbPzU.mHpp37uc4TW49cOzT08yd2bfE1ufTD00791Tzwy1ub.GXdkw9MN_Jh07PLc59N_LLk49cvLzf05K4Qs23S6db8XPLy7Yemnfu5unXfLh6aMvJ06yYdOzy6ddNO3L2w7OuXhh08mh007ctPpl4TNDpp25bW_dlrGq1IY">
 
 		      
       <om:phenomenonTime xlink:href="#time1-1-1"/>
@@ -4518,12 +4512,6 @@
                                       <wml2:time>2014-12-31T00:00:00Z</wml2:time>
 				      <wml2:value>3.7</wml2:value>
                             </wml2:MeasurementTVP>
-                        </wml2:point>                          
-                        <wml2:point>
-                            <wml2:MeasurementTVP> 
-                                      <wml2:time>2015-01-01T00:00:00Z</wml2:time>
-				      <wml2:value>3.4</wml2:value>
-                            </wml2:MeasurementTVP>
                         </wml2:point>                         
                     </wml2:MeasurementTimeseries>
                 </om:result>
@@ -4531,7 +4519,7 @@
         </omso:PointTimeSeriesObservation>
     </wfs:member>
 	    <wfs:member>
-                <omso:PointTimeSeriesObservation gml:id="WFS-aaxng9Blg1ALqEh1D5b_Hq_SaPyJTowsIWbbpdOt.Lnl5dsPTTv3c3Trvlw9NGXk6dZMOnZ5dOumnbl7YdnXLww6eULSxZc.ndU07ctr76FChGNj5c61ItCnHdOmjJq4Z2XdkqaduW1_9ChQjOzbdPPTk51mMWDBy3YujXl899_LJf39svLvy09MOLZliZmzD0y8.kTM2b8eHZlrUzab8aSu69MzhrbcPiJp59MO7HlpWroQGltw.IvDfj0c5wSQ.wm9ty9Mu.hh5YduXpl5c6yOe7f3a23Tz56d2epl8dKxp2Gc2t3XbPzU.mHpp37uc4TW49cOzT08yd2bfE1ufTD00791Tzwy1ub.GXdkw9MN_Jh07PLc59N_LLk49cvLzf05K4Qs23S6db8XPLy7Yemnfu5unXfLh6aMvJ06yYdOzy6ddNO3L2w7OuXhh08mh007ctPpl4TNDpp25bW_dlrGq1IY">
+                <omso:PointTimeSeriesObservation gml:id="WFS-pM8RfEyLlILemKAk5o8OUSWGK.GJTowsIWbbpdOt.Lnl5dsPTTv3c3Trvlw9NGXk6dZMOnZ5dOumnbl7YdnXLww6eULSxZc.ndU07ctr76FChGNj5c61ItCnHdOmjJq4Z2XdkqaduW199CsfjOzbdPPTk51mMWDBy3YujXl899_LJf39svLvy09MOLZliZmzD0y8.kTM2b8eHZlrUzab8aSu69MzhrbcPiJp59MO7HlpWroQGltw.IvDfj0c5wSQ.wm9ty9Mu.hh5YduXpl5c6yOe7f3a23Tz56d2epl8dKxp2Gc2t3XbPzU.mHpp37uc4TW49cOzT08yd2bfE1ufTD00791Tzwy1ub.GXdkw9MN_Jh07PLc59N_LLk49cvLzf05K4Qs23S6db8XPLy7Yemnfu5unXfLh6aMvJ06yYdOzy6ddNO3L2w7OuXhh08mh007ctPpl4TNDpp25bW_dlrGq1IY">
 
 		      
       <om:phenomenonTime xlink:href="#time1-1-1"/>
@@ -6767,12 +6755,6 @@
                                       <wml2:time>2014-12-31T00:00:00Z</wml2:time>
 				      <wml2:value>7.0</wml2:value>
                             </wml2:MeasurementTVP>
-                        </wml2:point>                          
-                        <wml2:point>
-                            <wml2:MeasurementTVP> 
-                                      <wml2:time>2015-01-01T00:00:00Z</wml2:time>
-				      <wml2:value>3.0</wml2:value>
-                            </wml2:MeasurementTVP>
                         </wml2:point>                         
                     </wml2:MeasurementTimeseries>
                 </om:result>
@@ -6780,7 +6762,7 @@
         </omso:PointTimeSeriesObservation>
     </wfs:member>
 	    <wfs:member>
-                <omso:PointTimeSeriesObservation gml:id="WFS-gs10_5kaFVsS0kCy2FeoSRCiueOJTowsIWbbpdOt.Lnl5dsPTTv3c3Trvlw9NGXk6dZMOnZ5dOumnbl7YdnXLww6eULSxZc.ndU07ctr76FChGNj5c61ItCnHdOmjJq4Z2XdkqaduW1_9ChQjOzbdPPTk51mMWDBy3YujXl899_LJf39svLvy09MOLZliZmzD0y8.kTM2b8eHZlrUzab8aSu69MzhrbcPiJp59MO7HlpWroQGltw.IvDfj0c5wSQ.wm9ty9Mu.hh5YduXpl5c6yOm3Tua23Tz56d2epl8dKxp2Gc2t3XbPzU.mHpp37uc4TW49cOzT08yd2bfE1ufTD00791Tzwy1ub.GXdkw9MN_Jh07PLc59N_LLk49cvLzf05K4Qs23S6db8XPLy7Yemnfu5unXfLh6aMvJ06yYdOzy6ddNO3L2w7OuXhh08mh007ctPpl4TNDpp25bW_dlrGq1IY">
+                <omso:PointTimeSeriesObservation gml:id="WFS-OO3JxQYR4dhYcC3RgCpL7x805K2JTowsIWbbpdOt.Lnl5dsPTTv3c3Trvlw9NGXk6dZMOnZ5dOumnbl7YdnXLww6eULSxZc.ndU07ctr76FChGNj5c61ItCnHdOmjJq4Z2XdkqaduW199CsfjOzbdPPTk51mMWDBy3YujXl899_LJf39svLvy09MOLZliZmzD0y8.kTM2b8eHZlrUzab8aSu69MzhrbcPiJp59MO7HlpWroQGltw.IvDfj0c5wSQ.wm9ty9Mu.hh5YduXpl5c6yOm3Tua23Tz56d2epl8dKxp2Gc2t3XbPzU.mHpp37uc4TW49cOzT08yd2bfE1ufTD00791Tzwy1ub.GXdkw9MN_Jh07PLc59N_LLk49cvLzf05K4Qs23S6db8XPLy7Yemnfu5unXfLh6aMvJ06yYdOzy6ddNO3L2w7OuXhh08mh007ctPpl4TNDpp25bW_dlrGq1IY">
 
 		      
       <om:phenomenonTime xlink:href="#time1-1-1"/>
@@ -9016,12 +8998,6 @@
                                       <wml2:time>2014-12-31T00:00:00Z</wml2:time>
 				      <wml2:value>1.0</wml2:value>
                             </wml2:MeasurementTVP>
-                        </wml2:point>                          
-                        <wml2:point>
-                            <wml2:MeasurementTVP> 
-                                      <wml2:time>2015-01-01T00:00:00Z</wml2:time>
-				      <wml2:value>1.9</wml2:value>
-                            </wml2:MeasurementTVP>
                         </wml2:point>                         
                     </wml2:MeasurementTimeseries>
                 </om:result>
@@ -9029,7 +9005,7 @@
         </omso:PointTimeSeriesObservation>
     </wfs:member>
 	    <wfs:member>
-                <omso:PointTimeSeriesObservation gml:id="WFS-PhWBr8Zp5g1v12sHK_c4a_TChb2JTowsIWbbpdOt.Lnl5dsPTTv3c3Trvlw9NGXk6dZMOnZ5dOumnbl7YdnXLww6eULSxZc.ndU07ctr76FChGNj5c61ItCnHdOmjJq4Z2XdkqaduW1_9ChQjOzbdPPTk51mMWDBy3YujXl899_LJf39svLvy09MOLZliZmzD0y8.kTM2b8eHZlrUzab8aSu69MzhrbcPiJp59MO7HlpWroQGltw.IvDfj0c5wSQ.wm9ty9Mu.hh5YduXpl5c6yOm3D4a23Tz56d2epl8dKxp2Gc2t3XbPzU.mHpp37uc4TW49cOzT08yd2bfE1ufTD00791Tzwy1ub.GXdkw9MN_Jh07PLc59N_LLk49cvLzf05K4Qs23S6db8XPLy7Yemnfu5unXfLh6aMvJ06yYdOzy6ddNO3L2w7OuXhh08mh007ctPpl4TNDpp25bW_dlrGq1IY">
+                <omso:PointTimeSeriesObservation gml:id="WFS-uMqVUQT.bEbajllxXjaPhZVQdEKJTowsIWbbpdOt.Lnl5dsPTTv3c3Trvlw9NGXk6dZMOnZ5dOumnbl7YdnXLww6eULSxZc.ndU07ctr76FChGNj5c61ItCnHdOmjJq4Z2XdkqaduW199CsfjOzbdPPTk51mMWDBy3YujXl899_LJf39svLvy09MOLZliZmzD0y8.kTM2b8eHZlrUzab8aSu69MzhrbcPiJp59MO7HlpWroQGltw.IvDfj0c5wSQ.wm9ty9Mu.hh5YduXpl5c6yOm3D4a23Tz56d2epl8dKxp2Gc2t3XbPzU.mHpp37uc4TW49cOzT08yd2bfE1ufTD00791Tzwy1ub.GXdkw9MN_Jh07PLc59N_LLk49cvLzf05K4Qs23S6db8XPLy7Yemnfu5unXfLh6aMvJ06yYdOzy6ddNO3L2w7OuXhh08mh007ctPpl4TNDpp25bW_dlrGq1IY">
 
 		      
       <om:phenomenonTime xlink:href="#time1-1-1"/>
@@ -11264,12 +11240,6 @@
                             <wml2:MeasurementTVP> 
                                       <wml2:time>2014-12-31T00:00:00Z</wml2:time>
 				      <wml2:value>4.7</wml2:value>
-                            </wml2:MeasurementTVP>
-                        </wml2:point>                          
-                        <wml2:point>
-                            <wml2:MeasurementTVP> 
-                                      <wml2:time>2015-01-01T00:00:00Z</wml2:time>
-				      <wml2:value>5.1</wml2:value>
                             </wml2:MeasurementTVP>
                         </wml2:point>                         
                     </wml2:MeasurementTimeseries>
