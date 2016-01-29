@@ -22,13 +22,13 @@ def write_to_file(path, data):
     f = open(path, 'w+')
     for row in data:
         for column in row:
-            f.write("%s" % column)
+            f.write("%s " % column)
         f.write('\n')
     f.close()
 
 def clean_labels():
     """
-    Reades labels from cyclics count files and writes them on a file without all the unneeded extra
+    Reads labels from cyclics count files and writes them on a file without all the unneeded extra
     information.
     """
     # Read data from 1.1.2013 until 28.4.2015
@@ -61,12 +61,43 @@ def clean_labels():
             count = 0
     return data
 
+def clean_weather_data(path):
+    """
+    Reads data from given xml file and returns it as a clean array of floats. The array contains a
+    row for each day with the columns containing:
+    col 0: amount of rain
+    col 1: medium temperature
+    col 2: snow depth
+    col 3: minimum temperature
+    col 4: maximum temperature
+    """
+    soup = read_xml_file(path)
+    data = []
+    i = 0
+    for feature in soup.find_all('MeasurementTimeseries'):
+        j = 0
+        feature_name = feature.get('gml:id')
+        for value_tag in feature.find_all('value'):
+            value = float(value_tag.string)
+            if value != value:
+                value = -1.0
+            if i == 0:
+                data.append([value])
+            else:
+                data[j].append(value)
+            j += 1
+        i += 1
+    return data
+
 def print_xml(path):
     soup = read_xml_file(path)
     for feature in soup.find_all('MeasurementTimeseries'):
         # prints feature ids
         print(feature.get('gml:id'))
 
-print_xml('original/fmi-2013-2014.xml')
+data = clean_weather_data('original/fmi-2013-2014.xml')
+data.extend(clean_weather_data('original/fmi-2014-2015.xml'))
+data.extend(clean_weather_data('original/fmi-2015-2016.xml'))
 
+write_to_file('clean/data', data)
 write_to_file('clean/labels', clean_labels())
