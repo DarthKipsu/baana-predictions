@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup
 from openpyxl import load_workbook
 
+import numpy as np
+
 def read_xlsx_file(path, sheet):
     """
     Takes a path to xlsx (Excel) file and a sheet name within the file and returns an openpyxl
@@ -26,6 +28,23 @@ def write_to_file(path, data):
         f.write('\n')
     f.close()
 
+def daily_counts_from_hourly(raw_data, count_func):
+    """
+    Takes original data with hourly cycler counts and compresses them to daily counts. Uses
+    count_func to read the correct cyclist value from the data.
+    """
+    data = []
+    hour = 0
+    count = 0
+    for row in raw_data:
+        count += count_func(row)
+        hour += 1
+        if (hour == 24):
+            data.append([count])
+            hour = 0
+            count = 0
+    return data
+
 def clean_labels():
     """
     Reads labels from cyclics count files and writes them on a file without all the unneeded extra
@@ -37,28 +56,14 @@ def clean_labels():
 
     # Read data between 29.4.2015 and 30.9.2015
     with open('original/Helsingin_pyorailijamaarat.csv') as csv_file:
-        csv_data = [row.split(',') for row in csv_file.readlines()]
-        hour = 0
-        count = 0
-        for i in range(11593, 15313):
-            count += int(csv_data[i][16])
-            hour += 1
-            if (hour == 24):
-                data.append([count])
-                hour = 0
-                count = 0
+        csv_data = np.array([row.split(',') for row in csv_file.readlines()])
+        clean_data = daily_counts_from_hourly(csv_data[11593:15313], lambda x: int(x[16]))
+        data.extend(clean_data)
 
     # Read data between 1.10.2015 and 31.12.2015
     sheet = read_xlsx_file('original/Baana_syys_joulukuu.xlsx', 'Pohjoinen Rautatiekatu')
-    hour = 0
-    count = 0
-    for row in sheet.iter_rows('A2:B2209'):
-        count += row[1].value
-        hour += 1
-        if (hour == 24):
-            data.append([count])
-            hour = 0
-            count = 0
+    clean_data = daily_counts_from_hourly(sheet.iter_rows('A2:B2209'), lambda x: x[1].value)
+    data.extend(clean_data)
     return data
 
 def clean_weather_data(path):
@@ -88,12 +93,6 @@ def clean_weather_data(path):
             j += 1
         i += 1
     return data
-
-def print_xml(path):
-    soup = read_xml_file(path)
-    for feature in soup.find_all('MeasurementTimeseries'):
-        # prints feature ids
-        print(feature.get('gml:id'))
 
 data = clean_weather_data('original/fmi-2013-2014.xml')
 data.extend(clean_weather_data('original/fmi-2014-2015.xml'))
