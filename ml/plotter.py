@@ -15,7 +15,7 @@ label_locations = [15, 46, 74, 105, 135, 166, 196, 227, 258, 288, 319, 349, 380,
 
 def plot_cyclists_over_weather(weather_data, cyclist_data):
     x = range(1095)
-    fig = plt.figure(figsize=(15, 4), dpi=100)
+    fig = plt.figure(figsize=(13, 4), dpi=100)
     plt.plot(x, weather_data[:,0], 'c-', label='rain (mm)')
     plt.plot(x, weather_data[:,1], 'g-', label='average temperature ($^\circ$C)')
     plt.plot(x, weather_data[:,2], 'b-', label='snow (cm)')

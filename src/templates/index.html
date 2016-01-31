@@ -1,0 +1,17 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GettingStarted</title>
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <h3>Training data</h3>
+        <p>Weather data and cyclist counts plotted on top of each other:</p>
+        <img src="{% static 'training_data_clean.png'%}">
+      </div>
+    </div>
+  </body>
+</html>
