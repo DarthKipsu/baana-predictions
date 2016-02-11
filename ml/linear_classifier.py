@@ -19,6 +19,5 @@ clf.fit(trainingX, trainingY)
 test_predictions = clf.predict(testX)
 test_predictions[test_predictions < 0] = 0
 print(test_predictions)
-print("Error:", 1 - test_predictions.sum() / testY.ravel().sum())
 
 plot.plot_test(test_predictions, testY)
