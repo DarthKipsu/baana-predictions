@@ -14,6 +14,7 @@ label_locations = [15, 46, 74, 105, 135, 166, 196, 227, 258, 288, 319, 349, 380,
         776, 804, 835, 865, 896, 926, 957, 988, 1018, 1049, 1079, 1110]
 
 def plot_cyclists_over_weather(weather_data, cyclist_data):
+    plt.clf()
     x = range(1095)
     fig = plt.figure(figsize=(13, 4), dpi=100)
     plt.plot(x, weather_data[:,0], 'c-', label='rain (mm)')
@@ -25,4 +26,14 @@ def plot_cyclists_over_weather(weather_data, cyclist_data):
     plt.legend(bbox_to_anchor=(0., 1.02, 1., .12), ncol=4, mode='expand', borderaxespad=0)
     fig.savefig('src/static/training_data_clean.png', bbox_inches='tight')
 
-plot_cyclists_over_weather(reader.rain_temp_snow(), reader.cycklists_by_hundreds())
+def plot_test(predictions, actual):
+    plt.clf()
+    fig = plt.figure(figsize=(10, 5), dpi=100)
+    ax = fig.add_subplot(111)
+    ax.set_xlabel('Actual data')
+    ax.set_ylabel('Predicted data')
+    plt.plot(actual, predictions, 'ro')
+    plt.plot([0, 6000], [0, 6000], 'k--')
+    fig.savefig('plot_test.png', bbox_inches='tight')
+
+#plot_cyclists_over_weather(reader.rain_temp_snow(), reader.cycklists_by_hundreds())
