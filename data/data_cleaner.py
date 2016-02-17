@@ -94,9 +94,11 @@ def clean_weather_data(path):
         i += 1
     return data
 
-data = clean_weather_data('original/fmi-2013-2014.xml')
-data.extend(clean_weather_data('original/fmi-2014-2015.xml'))
-data.extend(clean_weather_data('original/fmi-2015-2016.xml'))
-
-write_to_file('clean/data', data)
-write_to_file('clean/labels', clean_labels())
+def clean_original_data_files():
+    data = clean_weather_data('original/fmi-2013-2014.xml')
+    data.extend(clean_weather_data('original/fmi-2014-2015.xml'))
+    data.extend(clean_weather_data('original/fmi-2015-2016.xml'))
+    data.extend(clean_weather_data('original/fmi-2016-beginning.xml'))
+    
+    write_to_file('clean/data', data)
+    write_to_file('clean/labels', clean_labels())
