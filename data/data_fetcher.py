@@ -63,6 +63,11 @@ def yesterdays_actual_weather(apikey):
         i += 1
     return data
 
+def cyclist_count():
+    html = urllib.request.urlopen("http://www1.infracontrol.com/cykla/barometer/barometer_fi.asp?system=helsinki&mode=day")
+    soup = BeautifulSoup(html, "lxml")
+    return int(soup.find_all('font')[2].get_text())
+
 def write_to_file(path, data):
     """
     Takes a path to file and data to br written as an array.
@@ -78,3 +83,4 @@ def update_data_file():
 
 print(yesterdays_actual_weather(os.environ.get('FMIAPIKEY')))
 print(load_tomorrows_forecast(os.environ.get('FMIAPIKEY')))
+print(cyclist_count())
