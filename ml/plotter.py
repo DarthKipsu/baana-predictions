@@ -36,4 +36,17 @@ def plot_test(predictions, actual):
     plt.plot([0, 6000], [0, 6000], 'k--')
     fig.savefig('plot_test.png', bbox_inches='tight')
 
+def plot_test_multi(predictions, actual, day):
+    plt.clf()
+    fig = plt.figure(figsize=(10, 5), dpi=100)
+    ax = fig.add_subplot(111)
+    ax.set_xlabel('Actual data')
+    ax.set_ylabel('Predicted data')
+    labels = ['Mondays', 'Tuesdays', 'Wednesdays', 'Thursdays', 'Fridays', 'Saturdays', 'Sundays']
+    for i in range(7):
+        plt.plot(actual[day == i], predictions[i], 'o', label=labels[i])
+    plt.plot([0, 6000], [0, 6000], 'k--')
+    plt.legend(loc=2)
+    fig.savefig('plot_test_multi.png', bbox_inches='tight')
+
 #plot_cyclists_over_weather(reader.rain_temp_snow(), reader.cycklists_by_hundreds())

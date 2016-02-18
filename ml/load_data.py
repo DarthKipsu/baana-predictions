@@ -11,17 +11,16 @@ def read_cyclist_data():
 def rain_temp_snow():
     return read_weather_data()[:,[0,1,2]]
 
-def add_day_of_week(data):
+def day_of_week():
     '''
     Monday = 0, Tuesday = 1, ..., Sunday = 6
     '''
-    di = len(data[0])
-    with_days = np.zeros((len(data), di+1))
-    with_days[:,:-1] = data
+    data_len = len(read_cyclist_data())
+    days = np.zeros(data_len)
     for i in range(6):
-        days = with_days[i::7]
-        days[:,[di]] = i+1
-    return with_days
+        temp = days[i::7]
+        temp[:] = i+1 # data starts from tuesday 1.1.2013
+    return days
 
 def rain_temp_snow_days():
     return add_day_of_week(read_weather_data()[:,[0,1,2]])
