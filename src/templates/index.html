@@ -8,6 +8,33 @@
   <body>
     <div class="container">
       <div class="row">
+        <h3>Predictions</h3>
+        {% if today %}
+          <div>
+            <p>{{ today.date }}: predicted: <strong>{{ today.prediction }}</strong></p>
+          </div>
+        {% else %}
+          Error. Todays prediction could not be loaded!
+        {% endif %}
+        {% if tomorrow %}
+          <div>
+            <p>{{ tomorrow.date }}: predicted: <strong>{{ tomorrow.prediction }}</strong></p>
+          </div>
+        {% else %}
+          Error. Tomorrows prediction could not be loaded!
+        {% endif %}
+        {% if history %}
+          <div>
+            <p><strong>History:</strong></p>
+            {% for i in history %}
+            <p>{{ i.date }}: predicted: <strong>{{ i.prediction }}</strong>, actual: <strong>{{ i.actual }}</strong></p>
+            {% endfor %}
+          </div>
+        {% else %}
+          Error. No history data could be loaded!
+        {% endif %}
+      </div>
+      <div class="row">
         <h3>Training data</h3>
         <p>Weather data and cyclist counts plotted on top of each other:</p>
         <img src="{% static 'training_data_clean.png'%}">
