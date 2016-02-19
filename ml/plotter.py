@@ -49,4 +49,17 @@ def plot_test_multi(predictions, actual, day):
     plt.legend(loc=2)
     fig.savefig('plot_test_multi.png', bbox_inches='tight')
 
+def plot_test_double(predictions, actual, day):
+    plt.clf()
+    fig = plt.figure(figsize=(10, 5), dpi=100)
+    ax = fig.add_subplot(111)
+    ax.set_xlabel('Actual data')
+    ax.set_ylabel('Predicted data')
+    labels = ['Workdays', 'Weekends']
+    plt.plot(actual[day < 5], predictions[0], 'ro', label=labels[0])
+    plt.plot(actual[day > 4], predictions[1], 'bo', label=labels[1])
+    plt.plot([0, 6000], [0, 6000], 'k--')
+    plt.legend(loc=2)
+    fig.savefig('plot_test_double.png', bbox_inches='tight')
+
 #plot_cyclists_over_weather(reader.rain_temp_snow(), reader.cycklists_by_hundreds())
