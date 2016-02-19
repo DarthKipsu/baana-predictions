@@ -1,0 +1,2 @@
+55 23 * * * cd /home/kipsu/baana && /usr/bin/git pull && /usr/bin/python update_actual.py > cron.log 2>&1
+55 11 * * * /home/kipsu/baana/baana_data_update_cron.sh > /home/kipsu/baana/cron.log 2>&1
