@@ -1,4 +1,4 @@
-import load_data as reader
+import ml.load_data as reader
 import matplotlib.pyplot as plt
 import numpy as np
 

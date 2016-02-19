@@ -38,12 +38,15 @@ def snow_from_yesterday(apikey):
         feature_name = feature.get('gml:id')
         if feature_name == "obs-obs-1-1-snow":
             for value_tag in feature.find_all('value'):
-                return float(value_tag.string)
+                value = float(value_tag.string)
+                if value != value:
+                    return -1
+                return value
 
 def load_tomorrows_forecast(apikey):
     rain_temp = np.array(rain_and_temp(apikey))
     rain_temp[2] = snow_from_yesterday(apikey)
-    return list(map(lambda x: '%.1f' % round(x, 1), rain_temp))
+    return list(map(lambda x: float('%.1f' % round(x, 1)), rain_temp))
 
 def yesterdays_actual_weather(apikey):
     yesterday = (datetime.today()-timedelta(days=1)).strftime("%Y-%m-%d")
@@ -81,6 +84,6 @@ def write_to_file(path, data):
 def update_data_file():
     write_to_file('clean/data', yesterdays_actual_weather(os.environ.get('FMIAPIKEY')))
 
-print(yesterdays_actual_weather(os.environ.get('FMIAPIKEY')))
-print(load_tomorrows_forecast(os.environ.get('FMIAPIKEY')))
-print(cyclist_count())
+#print(yesterdays_actual_weather(os.environ.get('FMIAPIKEY')))
+#print(load_tomorrows_forecast(os.environ.get('FMIAPIKEY')))
+#print(cyclist_count())

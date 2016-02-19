@@ -2,9 +2,9 @@ from sklearn import linear_model
 from sklearn.metrics import mean_squared_error
 from sklearn.utils import shuffle
 
-import load_data as reader
+import ml.load_data as reader
 import numpy as np
-import plotter as plot
+import ml.plotter as plot
 
 def version1():
     X, y = shuffle(reader.rain_temp_snow(), reader.read_cyclist_data().ravel(), random_state=0)
@@ -41,6 +41,16 @@ def version2():
         clf[i].fit(trainingX[trainingD == i], trainingY[trainingD == i])
     return clf, testX, testY, testD
 
+def predict_with_v2(forecast, day):
+    X, y, days = reader.rain_temp_snow(), reader.read_cyclist_data().ravel(), reader.day_of_week()
+
+    clf = np.array([linear_model.LinearRegression() for i in range(7)])
+    for i in range(7):
+        clf[i].fit(X[days == i], y[days == i])
+    prediction = clf[day].predict([forecast])
+    prediction[prediction < 0] = 0
+    return prediction
+
 def test_classifier1(clf, testX, testY):
     test_predictions = clf.predict(testX)
     test_predictions[test_predictions < 0] = 0
@@ -51,6 +61,7 @@ def test_classifier2(clf, testX, testY, testD):
     predictions = []
     errors = []
     for i in range(7):
+        print(testX[testD == i])
         pred = clf[i].predict(testX[testD == i])
         pred[pred < 0] = 0
         errors.append(mean_squared_error(pred, testY[testD == i]))
@@ -58,8 +69,13 @@ def test_classifier2(clf, testX, testY, testD):
     print(np.sum(np.array(errors)))
     plot.plot_test_multi(predictions, testY, testD)
 
-clf, testX, testY = version1()
-test_classifier1(clf, testX, testY)
+def testing():
+    clf, testX, testY = version1()
+    test_classifier1(clf, testX, testY)
+    
+    clf, testX, testY, testD = version2()
+    test_classifier2(clf, testX, testY, testD)
 
-clf, testX, testY, testD = version2()
-test_classifier2(clf, testX, testY, testD)
+def predict_for(forecast, day):
+    return int(predict_with_v2(forecast[:3], day))
+    
