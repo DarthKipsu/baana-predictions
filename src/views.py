@@ -29,7 +29,7 @@ def prediction_objects():
             }
     tomorrow = {
             'prediction' : prediction[n],
-            "date" : "Tomorrow, " + (datetime.today()-timedelta(days=1)).strftime("%A %d. %B")
+            "date" : "Tomorrow, " + (datetime.today()+timedelta(days=1)).strftime("%A %d. %B")
             }
     return [history, today, tomorrow]
 
