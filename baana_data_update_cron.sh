@@ -1,4 +1,4 @@
-i#!/bin/bash
+#!/bin/bash
 cd /home/kipsu/baana
 /usr/bin/git pull
 /usr/bin/python update_predictions.py
