@@ -75,6 +75,5 @@ def plot_history(predictions, actual):
     plt.xlim([0, len(predictions)-1])
     plt.legend(bbox_to_anchor=(0., 1.02, 1., .12), ncol=4, mode='expand', borderaxespad=0)
     fig.savefig('src/static/history.png', bbox_inches='tight')
-    plt.show()
 
 #plot_cyclists_over_weather(reader.rain_temp_snow(), reader.cycklists_by_hundreds())

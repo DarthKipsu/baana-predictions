@@ -1,5 +1,8 @@
 from datetime import datetime, timedelta
 
+import matplotlib
+matplotlib.use('Agg')
+
 import data.data_fetcher as fetch
 import ml.linear_classifier as lc
 import ml.load_data as dl
