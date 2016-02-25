@@ -2,6 +2,8 @@ import ml.load_data as reader
 import matplotlib.pyplot as plt
 import numpy as np
 
+from datetime import date, datetime, timedelta
+
 labels = ['Jan 2013', 'Feb 2013', 'Mar 2013', 'Apr 2013', 'May 2013', 'Jun 2013', 'Jul 2013',
         'Aug 2013', 'Sep 2013', 'Oct 2013', 'Nov 2013', 'Dec 2013',
         'Jan 2014', 'Feb 2014', 'Mar 2014', 'Apr 2014', 'May 2014', 'Jun 2014', 'Jul 2014',
@@ -61,5 +63,18 @@ def plot_test_double(predictions, actual, day):
     plt.plot([0, 6000], [0, 6000], 'k--')
     plt.legend(loc=2)
     fig.savefig('plot_test_double.png', bbox_inches='tight')
+
+def plot_history(predictions, actual):
+    plt.clf()
+    x = range(len(predictions))
+    fig = plt.figure(figsize=(13, 4), dpi=100)
+    plt.plot(x, predictions, 'r-', label='predicted cyclists')
+    plt.plot(x, actual, 'g-', label='actual cyclists')
+    start_date = date(2016, 2, 13)
+    plt.xticks(x, [(start_date + timedelta(days=i)).strftime("%d.%m.%y") for i in x], rotation='vertical')
+    plt.xlim([0, len(predictions)-1])
+    plt.legend(bbox_to_anchor=(0., 1.02, 1., .12), ncol=4, mode='expand', borderaxespad=0)
+    fig.savefig('src/static/history.png', bbox_inches='tight')
+    plt.show()
 
 #plot_cyclists_over_weather(reader.rain_temp_snow(), reader.cycklists_by_hundreds())

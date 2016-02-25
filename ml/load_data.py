@@ -8,6 +8,14 @@ def read_cyclist_data():
     with open('data/clean/labels', 'rb') as data_file:
         return np.array([[float(value) for value in line.split()] for line in data_file])
 
+def read_predictions_data():
+    with open('data/clean/predictions', 'rb') as data_file:
+        return np.array([int(line.strip()) for line in data_file])
+
+def read_actual_data():
+    with open('data/clean/actual', 'rb') as data_file:
+        return np.array([int(line.strip()) for line in data_file])
+
 def rain_temp_snow():
     return read_weather_data()[:,[0,1,2]]
 
