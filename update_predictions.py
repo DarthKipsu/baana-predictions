@@ -20,16 +20,16 @@ def yesterdays_cyclists():
         lines = [int(line.strip()) for line in cyclists]
         return lines[len(lines)-1]
 
+def create_history_plot():
+    actual = dl.read_actual_data()
+    predictions = dl.read_predictions_data()[:len(actual)]
+    plot.plot_history(predictions, actual)
+
 def update_files():
     write_to_file('data/clean/predictions', tomorrows_prediction())
     write_to_file('data/clean/labels', yesterdays_cyclists())
     fetch.write_to_file('data/clean/data', fetch.yesterdays_actual_weather(os.environ.get('FMIAPIKEY')))
     create_history_plot()
-
-def create_history_plot():
-    actual = dl.read_actual_data()
-    predictions = dl.read_predictions_data()[:len(actual)]
-    plot.plot_history(predictions, actual)
 
 update_files()
 
