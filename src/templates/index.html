@@ -23,10 +23,20 @@
         {% else %}
           Error. Tomorrows prediction could not be loaded!
         {% endif %}
-        {% if history %}
-          <div>
-            <p><strong>History:</strong></p>
-            {% for i in history %}
+      </div>
+      <div class="row">
+        <h3>Past predictions</h3>
+        <p>Predictions and actual values:</p>
+        <img src="{% static 'history.png'%}">
+        <p>&nbsp;</p>
+        {% if history1 %}
+          <div class="col-sm-6">
+            {% for i in history1 %}
+            <p>{{ i.date }}: predicted: <strong>{{ i.prediction }}</strong>, actual: <strong>{{ i.actual }}</strong></p>
+            {% endfor %}
+          </div>
+          <div class="col-sm-6">
+            {% for i in history2 %}
             <p>{{ i.date }}: predicted: <strong>{{ i.prediction }}</strong>, actual: <strong>{{ i.actual }}</strong></p>
             {% endfor %}
           </div>
@@ -38,6 +48,7 @@
         <h3>Training data</h3>
         <p>Weather data and cyclist counts plotted on top of each other:</p>
         <img src="{% static 'training_data_clean.png'%}">
+        <p>&nbsp;</p>
       </div>
     </div>
   </body>

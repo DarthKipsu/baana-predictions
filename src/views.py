@@ -16,9 +16,11 @@ def prediction_objects():
     prediction = read_predictions()
     n = len(prediction) - 1
     start_date = date(2016, 2, 13)
-    history = []
+    history = [[], [], []]
+    split = len(actual) / 2
     for i in range(len(actual)):
-        history.insert(0, {
+        j = 0 if i % 2 == 0 else 1
+        history[j].insert(0, {
             'prediction' : prediction[i],
             'actual' : actual[i],
             'date' : (start_date + timedelta(days=i)).strftime("%d. %B %Y")
@@ -36,7 +38,8 @@ def prediction_objects():
 def index(request):
     data = prediction_objects()
     context = Context({
-        'history' : data[0],
+        'history1' : data[0][0],
+        'history2' : data[0][1],
         'today' : data[1],
         'tomorrow' : data[2]
         })
