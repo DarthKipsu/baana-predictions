@@ -7,7 +7,7 @@ import numpy as np
 import ml.plotter as plot
 
 def version1():
-    X, y = shuffle(reader.rain_temp_snow(), reader.read_cyclist_data().ravel(), random_state=0)
+    X, y = shuffle(reader.rain_temp_snow()[7:], reader.read_cyclist_data().ravel()[7:], random_state=0)
     n = int((len(X)/10)*9)
 
     trainingX= X[:n]
@@ -22,9 +22,9 @@ def version1():
 
 def version2():
     X, y, days = shuffle(
-            reader.rain_temp_snow(),
-            reader.read_cyclist_data().ravel(),
-            reader.day_of_week(),
+            reader.rain_temp_snow()[7:],
+            reader.read_cyclist_data().ravel()[7:],
+            reader.day_of_week()[7:],
             random_state=0)
     n = int((len(X)/10)*9)
 
@@ -43,9 +43,9 @@ def version2():
 
 def version2b():
     X, y, days = shuffle(
-            reader.rain_temp_snow(),
-            reader.read_cyclist_data().ravel(),
-            reader.day_of_week(),
+            reader.rain_temp_snow()[7:],
+            reader.read_cyclist_data().ravel()[7:],
+            reader.day_of_week()[7:],
             random_state=0)
     n = int((len(X)/10)*9)
 
@@ -122,7 +122,7 @@ def predict_with_v3(forecast, day):
 def test_classifier1(clf, testX, testY):
     test_predictions = clf.predict(testX)
     test_predictions[test_predictions < 0] = 0
-    print("error v1:", mean_squared_error(test_predictions, testY))
+    print("root-mean-square error v1:", mean_squared_error(testY, test_predictions) ** (1/2.0))
     plot.plot_test(test_predictions, testY)
 
 def test_classifier2(clf, testX, testY, testD):
@@ -133,10 +133,10 @@ def test_classifier2(clf, testX, testY, testD):
         pred[pred < 0] = 0
         errors.append(mean_squared_error(pred, testY[testD == i]))
         predictions.append(pred)
-    print('error v2:', np.sum(np.array(errors)))
+    print('root-mean-square error v2:', (np.sum(np.array(errors))/len(errors)) ** (1/2.0))
     plot.plot_test_multi(predictions, testY, testD)
 
-def test_classifier2b(clf, testX, testY, testD):
+def test_classifier2b(clf, testX, testY, testD, name):
     pred0 = clf[0].predict(testX[testD < 5])
     pred0[pred0 < 0] = 0
     errors0 = mean_squared_error(pred0, testY[testD < 5])
@@ -145,21 +145,22 @@ def test_classifier2b(clf, testX, testY, testD):
     pred1[pred1 < 0] = 0
     errors1 = mean_squared_error(pred1, testY[testD > 4])
 
-    print('error v2b:', errors0 + errors1)
-    plot.plot_test_double([pred0, pred1], testY, testD)
+    print('root-mean-square error v2b & 3:', ((errors0 + errors1)/2) ** (1/2.0))
+    plot.plot_test_double([pred0, pred1], testY, testD, name)
 
 def testing():
     clf, testX, testY = version1()
+    print("testisetin koko", len(testX))
     test_classifier1(clf, testX, testY)
     
     clf, testX, testY, testD = version2()
     test_classifier2(clf, testX, testY, testD)
     
     clf, testX, testY, testD = version2b()
-    test_classifier2b(clf, testX, testY, testD)
+    test_classifier2b(clf, testX, testY, testD, 'plot_test_double.png')
     
     clf, testX, testY, testD = version3()
-    test_classifier2b(clf, testX, testY, testD)
+    test_classifier2b(clf, testX, testY, testD, 'plot_test_prev.png')
 
 def predict_for(forecast, day):
     return int(predict_with_v3(forecast, day))

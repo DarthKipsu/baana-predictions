@@ -35,7 +35,7 @@ def plot_test(predictions, actual):
     ax.set_xlabel('Actual data')
     ax.set_ylabel('Predicted data')
     plt.plot(actual, predictions, 'ro')
-    plt.plot([0, 6000], [0, 6000], 'k--')
+    plt.plot([0, 7000], [0, 7000], 'k--')
     fig.savefig('plot_test.png', bbox_inches='tight')
 
 def plot_test_multi(predictions, actual, day):
@@ -47,11 +47,11 @@ def plot_test_multi(predictions, actual, day):
     labels = ['Mondays', 'Tuesdays', 'Wednesdays', 'Thursdays', 'Fridays', 'Saturdays', 'Sundays']
     for i in range(7):
         plt.plot(actual[day == i], predictions[i], 'o', label=labels[i])
-    plt.plot([0, 6000], [0, 6000], 'k--')
+    plt.plot([0, 7000], [0, 7000], 'k--')
     plt.legend(loc=2)
     fig.savefig('plot_test_multi.png', bbox_inches='tight')
 
-def plot_test_double(predictions, actual, day):
+def plot_test_double(predictions, actual, day, filename):
     plt.clf()
     fig = plt.figure(figsize=(10, 5), dpi=100)
     ax = fig.add_subplot(111)
@@ -60,9 +60,9 @@ def plot_test_double(predictions, actual, day):
     labels = ['Workdays', 'Weekends']
     plt.plot(actual[day < 5], predictions[0], 'ro', label=labels[0])
     plt.plot(actual[day > 4], predictions[1], 'bo', label=labels[1])
-    plt.plot([0, 6000], [0, 6000], 'k--')
+    plt.plot([0, 7000], [0, 7000], 'k--')
     plt.legend(loc=2)
-    fig.savefig('plot_test_double.png', bbox_inches='tight')
+    fig.savefig(filename, bbox_inches='tight')
 
 def plot_history(predictions, actual):
     plt.clf()
