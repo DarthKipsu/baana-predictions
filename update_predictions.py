@@ -41,8 +41,8 @@ def create_history_plot():
     plot.plot_history(predictions, actual)
 
 def update_files():
-    write_to_file('data/clean/labels', yesterdays_cyclists())
     write_to_file('data/clean/predictions', tomorrows_prediction_with_past())
+    write_to_file('data/clean/labels', yesterdays_cyclists())
     fetch.write_to_file('data/clean/data', fetch.yesterdays_actual_weather(os.environ.get('FMIAPIKEY')))
     create_history_plot()
 
