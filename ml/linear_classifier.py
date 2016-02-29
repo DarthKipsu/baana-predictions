@@ -62,6 +62,27 @@ def version2b():
     clf[1].fit(trainingX[trainingD > 4], trainingY[trainingD > 4])
     return clf, testX, testY, testD
 
+def version3():
+    X, y, days = shuffle(
+            reader.rain_temp_snow_prev(),
+            reader.read_cyclist_data().ravel()[7:],
+            reader.day_of_week()[7:],
+            random_state=0)
+    n = int((len(X)/10)*9)
+
+    trainingX= X[:n]
+    trainingY = y[:n]
+    trainingD = days[:n]
+    
+    testX = X[n:]
+    testY = y[n:]
+    testD = days[n:]
+
+    clf = np.array([linear_model.LinearRegression() for i in range(2)])
+    clf[0].fit(trainingX[trainingD < 5], trainingY[trainingD < 5])
+    clf[1].fit(trainingX[trainingD > 4], trainingY[trainingD > 4])
+    return clf, testX, testY, testD
+
 def predict_with_v2(forecast, day):
     X, y, days = reader.rain_temp_snow(), reader.read_cyclist_data().ravel(), reader.day_of_week()
 
@@ -74,6 +95,19 @@ def predict_with_v2(forecast, day):
 
 def predict_with_v2b(forecast, day):
     X, y, days = reader.rain_temp_snow(), reader.read_cyclist_data().ravel(), reader.day_of_week()
+
+    clf = np.array([linear_model.LinearRegression() for i in range(2)])
+    clf[0].fit(X[days < 5], y[days < 5])
+    clf[1].fit(X[days > 4], y[days > 4])
+    if day < 5:
+        prediction = clf[0].predict([forecast])
+    else:
+        prediction = clf[1].predict([forecast])
+    prediction[prediction < 0] = 0
+    return prediction
+
+def predict_with_v3(forecast, day):
+    X, y, days = reader.rain_temp_snow_prev(), reader.read_cyclist_data().ravel()[7:], reader.day_of_week()[7:]
 
     clf = np.array([linear_model.LinearRegression() for i in range(2)])
     clf[0].fit(X[days < 5], y[days < 5])
@@ -123,7 +157,10 @@ def testing():
     
     clf, testX, testY, testD = version2b()
     test_classifier2b(clf, testX, testY, testD)
+    
+    clf, testX, testY, testD = version3()
+    test_classifier2b(clf, testX, testY, testD)
 
 def predict_for(forecast, day):
-    return int(predict_with_v2b(forecast[:3], day))
+    return int(predict_with_v3(forecast, day))
     
