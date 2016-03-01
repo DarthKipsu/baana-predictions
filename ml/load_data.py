@@ -27,7 +27,7 @@ def rain_temp_snow_prev():
     for i in range(7, len(data)):
         data[i][3] = y[i-1][0]
         data[i][4] = y[i-7][0]
-    return normalize(data[7:], axis=0)
+    return data[7:]
 
 def day_of_week():
     '''
