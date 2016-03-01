@@ -4,27 +4,36 @@
   <head>
     <title>Baana predictions</title>
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <link href='https://fonts.googleapis.com/css?family=Arvo:700italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
   </head>
   <body>
     <div class="container">
+      <div class="title"><img src="{% static 'title.png' %}"></div>
       <div class="row">
-        <h3>Predictions</h3>
+        <div>
+          <p>This service will try to predict cyclist counts at a cycling and pedestrian route Baana in Helsinki. Results and predictions are updated daily at noon.<br>
+          <a href="//github.com/DarthKipsu/baana-predictions">The project is open source and available at GitHub.</a></p>
+        </div>
+        <div class="col-sm-1"></div>
         {% if today %}
-          <div>
-            <p>{{ today.date }}: predicted: <strong>{{ today.prediction }}</strong></p>
+          <div class="col-sm-5 pred">
+            <h3>Predicted today: <strong>{{ today.prediction }}</strong> cyclists</h3>
           </div>
         {% else %}
           Error. Todays prediction could not be loaded!
         {% endif %}
         {% if tomorrow %}
-          <div>
-            <p>{{ tomorrow.date }}: predicted: <strong>{{ tomorrow.prediction }}</strong></p>
+          <div class="col-sm-5 pred">
+            <h3>Predicted tomorrow: <strong>{{ tomorrow.prediction }}</strong> cyclists</h3>
           </div>
         {% else %}
           Error. Tomorrows prediction could not be loaded!
         {% endif %}
+        <div class="col-sm-1"></div>
       </div>
       <div class="row">
+        <p>&nbsp;</p>
         <h3>Past predictions</h3>
         <p>Predictions and actual values:</p>
         <img src="{% static 'history.png'%}">

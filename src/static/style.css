@@ -1,0 +1,26 @@
+body {
+  background: #FFF7FA;
+}
+
+.container {
+  width: 1200px;
+  background: white;
+  padding: 50px;
+  text-align: center;
+}
+
+.container > title {
+  width: 100%;
+  font-family: 'Arvo', serif;
+  color: #A330BA;
+  text-align: center;
+}
+
+.title > img {
+  display: block;
+  margin: 0 auto 70px auto;
+}
+
+.pred {
+  color: #B80647;
+}
