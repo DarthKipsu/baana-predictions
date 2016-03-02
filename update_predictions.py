@@ -22,8 +22,7 @@ def tomorrows_prediction():
     day = (datetime.today()+timedelta(1)).weekday()
     return lc.predict_for(forecast, day)
 
-def tomorrows_prediction_with_past():
-    forecast = fetch.load_tomorrows_forecast(os.environ.get('FMIAPIKEY'))
+def tomorrows_prediction_with_past(forecast):
     past_actual = read_actual()
     forecast[3] = float(past_actual[len(past_actual)-1])
     forecast[4] = float(past_actual[len(past_actual)-7])
@@ -41,7 +40,9 @@ def create_history_plot():
     plot.plot_history(predictions, actual)
 
 def update_files():
-    write_to_file('data/clean/predictions', tomorrows_prediction_with_past())
+    forecast = fetch.load_tomorrows_forecast(os.environ.get('FMIAPIKEY'))
+    fetch.write_to_file('data/clean/forecasts', forecast)
+    write_to_file('data/clean/predictions', tomorrows_prediction_with_past(forecast))
     write_to_file('data/clean/labels', yesterdays_cyclists())
     fetch.write_to_file('data/clean/data', fetch.yesterdays_actual_weather(os.environ.get('FMIAPIKEY')))
     create_history_plot()
