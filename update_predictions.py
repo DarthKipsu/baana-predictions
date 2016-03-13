@@ -37,7 +37,8 @@ def yesterdays_cyclists():
 def create_history_plot():
     actual = dl.read_actual_data()
     predictions = dl.read_predictions_data()[:len(actual)]
-    plot.plot_history(predictions, actual)
+    weather = dl.weather_data_multiplied(100)
+    plot.plot_history(predictions, actual, weather[-len(predictions):])
 
 def update_files():
     forecast = fetch.load_tomorrows_forecast(os.environ.get('FMIAPIKEY'))
@@ -48,6 +49,7 @@ def update_files():
     create_history_plot()
 
 update_files()
+#create_history_plot()
 
 #create_history_plot()
 #print('forecast tomorrow:', fetch.load_tomorrows_forecast(os.environ.get('FMIAPIKEY')))

@@ -64,16 +64,19 @@ def plot_test_double(predictions, actual, day, filename):
     plt.legend(loc=2)
     fig.savefig(filename, bbox_inches='tight')
 
-def plot_history(predictions, actual):
+def plot_history(predictions, actual, weather):
     plt.clf()
     x = range(len(predictions))
     fig = plt.figure(figsize=(13, 4), dpi=100)
-    plt.plot(x, predictions, 'r-', label='predicted cyclists')
-    plt.plot(x, actual, 'g-', label='actual cyclists')
+    plt.plot(x, weather[:,1], '-', label='average temperature', color='#7CF55B')
+    plt.plot(x, weather[:,0], '-', label='rain', color='#BEE1ED')
+    plt.plot(x, weather[:,2], '-', label='snow', color='#7ECEED')
+    plt.plot(x, actual, 'm-', label='actual cyclists', linewidth=1.5)
+    plt.plot(x, predictions, 'r-', label='predicted cyclists', linewidth=1.5)
     start_date = date(2016, 2, 13)
     plt.xticks(x, [(start_date + timedelta(days=i)).strftime("%d.%m.%y") for i in x], rotation='vertical')
     plt.xlim([0, len(predictions)-1])
-    plt.legend(bbox_to_anchor=(0., 1.02, 1., .12), ncol=4, mode='expand', borderaxespad=0)
+    plt.legend(bbox_to_anchor=(0., 1.02, 1., .12), ncol=5, mode='expand', borderaxespad=0)
     fig.savefig('src/static/history.png', bbox_inches='tight')
 
 #plot_cyclists_over_weather(reader.rain_temp_snow(), reader.cycklists_by_hundreds())

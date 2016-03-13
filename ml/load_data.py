@@ -6,6 +6,11 @@ def read_weather_data():
     with open('data/clean/data', 'rb') as data_file:
         return np.array([[float(value) for value in line.split()] for line in data_file])
 
+def weather_data_multiplied(multiplier):
+    data = read_weather_data()
+    data = data * multiplier
+    return data
+
 def read_cyclist_data():
     with open('data/clean/labels', 'rb') as data_file:
         return np.array([[float(value) for value in line.split()] for line in data_file])
