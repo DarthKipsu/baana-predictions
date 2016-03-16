@@ -34,6 +34,13 @@ def rain_temp_snow_prev():
         data[i][4] = y[i-7][0]
     return data[7:]
 
+def rain_temp_snow_prev_week():
+    data = read_weather_data()
+    y = read_cyclist_data()
+    for i in range(7, len(data)):
+        data[i][3] = y[i-5][0]
+    return data[7:,[0,1,2,3]]
+
 def day_of_week():
     '''
     Monday = 0, Tuesday = 1, ..., Sunday = 6

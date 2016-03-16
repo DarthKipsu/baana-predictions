@@ -119,6 +119,19 @@ def predict_with_v3(forecast, day):
     prediction[prediction < 0] = 0
     return prediction
 
+def predict_with_v4(forecast, day):
+    X, y, days = reader.rain_temp_snow_prev_week(), reader.read_cyclist_data().ravel()[7:], reader.day_of_week()[7:]
+
+    clf = np.array([linear_model.LinearRegression() for i in range(2)])
+    clf[0].fit(X[days < 5], y[days < 5])
+    clf[1].fit(X[days > 4], y[days > 4])
+    if day < 5:
+        prediction = clf[0].predict([forecast])
+    else:
+        prediction = clf[1].predict([forecast])
+    prediction[prediction < 0] = 0
+    return prediction
+
 def test_classifier1(clf, testX, testY):
     test_predictions = clf.predict(testX)
     test_predictions[test_predictions < 0] = 0
@@ -163,5 +176,5 @@ def testing():
     test_classifier2b(clf, testX, testY, testD, 'plot_test_prev.png')
 
 def predict_for(forecast, day):
-    return int(predict_with_v3(forecast, day))
+    return int(predict_with_v4(forecast[:4], day))
     
