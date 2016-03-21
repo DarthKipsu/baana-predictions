@@ -19,6 +19,7 @@ def write_to_file(path, value):
 
 def tomorrows_prediction():
     forecast = fetch.load_tomorrows_forecast(os.environ.get('FMIAPIKEY'))
+    print('fmi apikey:', os.environ.get('FMIAPIKEY'))
     day = (datetime.today()+timedelta(1)).weekday()
     return lc.predict_for(forecast, day)
 
